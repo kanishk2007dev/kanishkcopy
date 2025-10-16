@@ -1,0 +1,83 @@
+{
+  "v": "5.5.2",
+  "nm": "KDEC Logo Subtle Build",
+  "w": 500,
+  "h": 500,
+  "fr": 30, // Frame Rate (30 FPS)
+  "ip": 0, // In Point (Start Frame)
+  "op": 135, // Out Point (Total Frames for 4.5 seconds at 30 FPS)
+  "assets": [], // Image/precomp assets would go here
+  "layers": [
+    // -----------------------------------------------------------------
+    // LAYER 1: CIRCLE OUTLINE DRAW (Stage 1: 0.0s - 1.2s | Frames 0-36)
+    // -----------------------------------------------------------------
+    {
+      "ty": 4, // Shape Layer
+      "nm": "Circle Outline",
+      "ks": { /* ... Transform properties */ },
+      "shapes": [
+        { "ty": "gr", "nm": "Circle Shape", "it": [
+          { "ty": "el", "s": [500, 500], "p": [0, 0] }, // Ellipse Path
+          { "ty": "st", "c": [0.8, 0.8, 0.8, 1], "w": 5 }, // Stroke (Silver)
+          // TRIM PATHS IS KEY FOR THE DRAWING EFFECT:
+          { "ty": "tp", "s": { // Start Trim Path
+            "k": [
+              { "t": 0, "s": 0 }, // Start at 0%
+              { "t": 36, "s": 100, "e": "EaseOut" } // End at 100%
+            ]}
+          }
+        ]}
+      ]
+    },
+
+    // -----------------------------------------------------------------
+    // LAYER 2: KDEC LETTERS (Stage 2: 1.2s - 2.2s | Frames 36-66)
+    // -----------------------------------------------------------------
+    {
+      "ty": 5, // Text Layer (Placeholder)
+      "nm": "KDEC Text",
+      "t": { "d": { "k": [ { "s": { "t": "KDEC" } } ] } },
+      "ks": { // Scale/Opacity for bounce-in
+        "o": { // Opacity
+          "k": [
+            { "t": 36, "s": 0 },
+            { "t": 40, "s": 100 }
+          ]
+        },
+        "s": { // Scale (for the bounce effect)
+          "k": [
+            { "t": 36, "s": [95, 95, 100] },
+            { "t": 50, "s": [105, 105, 100] }, // Overshoot
+            { "t": 66, "s": [100, 100, 100] } // Settle
+          ]
+        }
+      }
+    },
+
+    // -----------------------------------------------------------------
+    // LAYER 3: TAGLINE (Stage 3: 2.2s - 3.0s | Frames 66-90)
+    // -----------------------------------------------------------------
+    {
+      "ty": 5, // Text Layer (Placeholder)
+      "nm": "Tagline Text",
+      "t": { "d": { "k": [ { "s": { "t": "Entertainment And Game" } } ] } },
+      "ks": { // Position/Opacity for slide-in
+        "o": { "k": [ { "t": 66, "s": 0 }, { "t": 70, "s": 100 } ] },
+        "p": { // Position (for the subtle slide-up)
+          "k": [
+            { "t": 66, "s": [0, 5] }, // Start 5px lower
+            { "t": 90, "s": [0, 0], "e": "EaseOut" } // End at final position
+          ]
+        }
+      }
+    },
+
+    // -----------------------------------------------------------------
+    // LAYER 4: FINAL GLOW/PULSE (Stage 4 & Loop: 3.0s+ | Frames 90-135)
+    // -----------------------------------------------------------------
+    // This effect is often done using a shape layer set to 'Add' or 'Screen' blend mode
+    // and animating its opacity or scale over the full logo.
+    // The continuous 'breathing' loop would start here (Frame 90).
+    /* ... additional layers for effects ... */
+  ]
+}
