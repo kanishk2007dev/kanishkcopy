@@ -10,10 +10,6 @@
             background-color: #fafafa;
             margin: 0;
         }
-        /* Hide main content by default */
-        #main-content {
-            display: none;
-        }
         .header {
             display: flex;
             align-items: center;
@@ -135,6 +131,15 @@
             object-fit: cover;
             display: block;
         }
+        .grid-item.protected::after {
+            content: '🔒'; /* Lock icon */
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 20px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
         .lightbox {
             display: none;
             position: fixed;
@@ -238,41 +243,41 @@
 
         <div id="posts-content" class="content-section active">
             <div class="grid-container">
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/275639083_531494531627795_851211526251576846_n_17940578479824243.webp" alt="Post 1"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278011479_2437059459758465_5815277724821876632_n_17915618921395650.webp" alt="Post 2"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278470741_1418174271960998_2256748172192186983_n_17960079316651576.webp" alt="Post 3"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278511879_1123132941842650_4885522122638228525_n_17890009325623471.webp" alt="Post 4"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278537989_675468653743857_5732975621003045616_n_17937738344008639.webp" alt="Post 5"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278564384_527450662180137_1063543408326544428_n_17937312002037921.webp" alt="Post 6"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278608865_5112027408857462_4181005760007536920_n_17954101543752913.webp" alt="Post 7"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278677322_1332341380611533_118215686874054229_n_18162782431228557.webp" alt="Post 8"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278693579_383203647059905_1056955622516990214_n_17911089161365023.webp" alt="Post 9"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278697803_1610455165993310_6604646702250211760_n_17920933988490514.webp" alt="Post 10"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278701933_4944170428970189_967260326003752875_n_17847961823757966.webp" alt="Post 11"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278705250_525300122306489_7793034045649032078_n_17943235759939745.webp" alt="Post 12"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278780166_141938881723688_2318127276041375421_n_17944956163817693.webp" alt="Post 13"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278850756_121401470505003_2385107124716059670_n_17891761463538426.webp" alt="Post 14"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278851410_702320024529443_3560511884354044099_n_17960407204633400.webp" alt="Post 15"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278868375_131087912836498_152375712963389802_n_17977727743518074.webp" alt="Post 16"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278876413_147126514491174_7730172297550720602_n_17953233418793835.webp" alt="Post 17"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278899965_349648963673075_7678246133333971891_n_18026544352364519.webp" alt="Post 18"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278911522_5057656367656120_4260296498490401810_n_17931971180048587.webp" alt="Post 19"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278960633_671947834057037_1134760154247013486_n_17946338302800707.webp" alt="Post 20"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/279006289_719128349103246_6642418414346000741_n_18271873096076269.webp" alt="Post 21"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299525498_610482157303189_5430073720575401164_n_17981913868592941.webp" alt="Post 22"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299731664_2067278610147979_262546949805179012_n_17956279939988328.webp" alt="Post 23"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299757533_967864484614777_7139842422132705794_n_17959679029912464.webp" alt="Post 24"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299829326_726371538453644_2935826590750147506_n_17994575449512112.webp" alt="Post 25"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299861779_1735372990149635_910710287577100489_n_18141488344274316.webp" alt="Post 26"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299932773_808402217186208_6344494188939016975_n_17947489211124121.webp" alt="Post 27"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299989874_193573329763047_8587212328195409384_n_18250411591107756.webp" alt="Post 28"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/300014219_189050813573806_1062496959195543952_n_17898416669596790.webp" alt="Post 29"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/300363989_154411210575225_4394745849935645314_n_17964990328733660.webp" alt="Post 30"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/300436559_1128852068067253_3056526851888413095_n_17932474112381791.webp" alt="Post 31"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/320345385_829476815101234_8809344418434264746_n_17999557675525955.webp" alt="Post 32"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/335505626_708921521018256_3458764241947577982_n_17905554968735935.webp" alt="Post 33"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/335541132_133096216148949_3193459533324582087_n_17921547197602717.webp" alt="Post 34"></div>
-                <div class="grid-item"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/335987422_174012882079144_8435482061007516471_n_18283359085099636.webp" alt="Post 35"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/275639083_531494531627795_851211526251576846_n_17940578479824243.webp" alt="Post 1"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278011479_2437059459758465_5815277724821876632_n_17915618921395650.webp" alt="Post 2"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278470741_1418174271960998_2256748172192186983_n_17960079316651576.webp" alt="Post 3"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278511879_1123132941842650_4885522122638228525_n_17890009325623471.webp" alt="Post 4"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278537989_675468653743857_5732975621003045616_n_17937738344008639.webp" alt="Post 5"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278564384_527450662180137_1063543408326544428_n_17937312002037921.webp" alt="Post 6"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278608865_5112027408857462_4181005760007536920_n_17954101543752913.webp" alt="Post 7"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278677322_1332341380611533_118215686874054229_n_18162782431228557.webp" alt="Post 8"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278693579_383203647059905_1056955622516990214_n_17911089161365023.webp" alt="Post 9"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278697803_1610455165993310_6604646702250211760_n_17920933988490514.webp" alt="Post 10"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278701933_4944170428970189_967260326003752875_n_17847961823757966.webp" alt="Post 11"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278705250_525300122306489_7793034045649032078_n_17943235759939745.webp" alt="Post 12"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278780166_141938881723688_2318127276041375421_n_17944956163817693.webp" alt="Post 13"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278850756_121401470505003_2385107124716059670_n_17891761463538426.webp" alt="Post 14"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278851410_702320024529443_3560511884354044099_n_17960407204633400.webp" alt="Post 15"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278868375_131087912836498_152375712963389802_n_17977727743518074.webp" alt="Post 16"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278876413_147126514491174_7730172297550720602_n_17953233418793835.webp" alt="Post 17"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278899965_349648963673075_7678246133333971891_n_18026544352364519.webp" alt="Post 18"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278911522_5057656367656120_4260296498490401810_n_17931971180048587.webp" alt="Post 19"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/278960633_671947834057037_1134760154247013486_n_17946338302800707.webp" alt="Post 20"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/279006289_719128349103246_6642418414346000741_n_18271873096076269.webp" alt="Post 21"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299525498_610482157303189_5430073720575401164_n_17981913868592941.webp" alt="Post 22"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299731664_2067278610147979_262546949805179012_n_17956279939988328.webp" alt="Post 23"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299757533_967864484614777_7139842422132705794_n_17959679029912464.webp" alt="Post 24"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299829326_726371538453644_2935826590750147506_n_17994575449512112.webp" alt="Post 25"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299861779_1735372990149635_910710287577100489_n_18141488344274316.webp" alt="Post 26"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299932773_808402217186208_6344494188939016975_n_17947489211124121.webp" alt="Post 27"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/299989874_193573329763047_8587212328195409384_n_18250411591107756.webp" alt="Post 28"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/300014219_189050813573806_1062496959195543952_n_17898416669596790.webp" alt="Post 29"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/300363989_154411210575225_4394745849935645314_n_17964990328733660.webp" alt="Post 30"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/300436559_1128852068067253_3056526851888413095_n_17932474112381791.webp" alt="Post 31"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/320345385_829476815101234_8809344418434264746_n_17999557675525955.webp" alt="Post 32"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/335505626_708921521018256_3458764241947577982_n_17905554968735935.webp" alt="Post 33"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/335541132_133096216148949_3193459533324582087_n_17921547197602717.webp" alt="Post 34"></div>
+                <div class="grid-item protected" data-password="secret"><img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/main/instagram/335987422_174012882079144_8435482061007516471_n_18283359085099636.webp" alt="Post 35"></div>
             </div>
         </div>
 
@@ -304,21 +309,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Password protection
-            function checkPassword() {
-                const password = "2007";
-                let enteredPassword = prompt("Please enter the password to access this page:");
-
-                if (enteredPassword === password) {
-                    document.getElementById('main-content').style.display = 'block';
-                } else {
-                    alert("Incorrect password. Access denied.");
-                    // Optional: You can redirect them or just leave the page blank
-                    document.body.innerHTML = '<h1 style="text-align:center; margin-top: 50px;">Access Denied</h1>';
-                }
-            }
-            
-            checkPassword(); // Run the password check as soon as the page loads
 
             // Tab switching logic
             const tabs = document.querySelectorAll('.tab');
@@ -335,17 +325,32 @@
                 });
             });
 
-            // Lightbox functionality
+            // Lightbox and password functionality
             const lightbox = document.getElementById('myLightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             const closeBtn = document.querySelector('.close-lightbox');
 
-            document.querySelectorAll('.grid-item img').forEach(item => {
+            document.querySelectorAll('.grid-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    lightbox.style.display = 'flex';
-                    lightboxImg.src = item.src;
+                    if (item.classList.contains('protected')) {
+                        const password = item.dataset.password;
+                        const enteredPassword = prompt("This content is protected. Please enter the password:");
+
+                        if (enteredPassword === password) {
+                            openLightbox(item.querySelector('img').src);
+                        } else if (enteredPassword !== null) { // User didn't click cancel
+                            alert("Incorrect password.");
+                        }
+                    } else {
+                        openLightbox(item.querySelector('img').src);
+                    }
                 });
             });
+
+            function openLightbox(src) {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = src;
+            }
 
             closeBtn.addEventListener('click', () => {
                 lightbox.style.display = 'none';
