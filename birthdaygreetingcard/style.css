@@ -1,5 +1,4 @@
-/* --- NEW: Modern UI Styles --- */
-
+/* --- Root Variables & Global Styles --- */
 :root {
     --panel-bg: rgba(255, 255, 255, 0.2);
     --panel-border: 1px solid rgba(255, 255, 255, 0.3);
@@ -10,7 +9,6 @@
 }
 
 body {
-    /* Use the new Poppins font */
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: var(--text-color);
     display: flex;
@@ -29,11 +27,13 @@ h1 {
     color: #1a3a6c;
     text-shadow: 0 1px 3px rgba(255,255,255,0.7);
     z-index: 10;
+    margin-bottom: 30px;
 }
 
 h2 {
     font-weight: 600;
     color: #004a99;
+    margin-top: 0;
 }
 
 .container {
@@ -41,26 +41,82 @@ h2 {
     flex-wrap: wrap; 
     gap: 30px;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px; /* Increased max-width to accommodate template selector */
     z-index: 10;
+    justify-content: center;
 }
 
-/* This is the new "Glassmorphism" panel style */
 .panel {
-    flex: 1; 
-    min-width: 350px; 
     padding: 30px;
-    
-    /* The Glass Effect */
     background: var(--panel-bg);
     border: var(--panel-border);
     backdrop-filter: blur(var(--blur));
-    -webkit-backdrop-filter: blur(var(--blur)); /* For Safari */
-    
+    -webkit-backdrop-filter: blur(var(--blur));
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
+.controls, .card-preview {
+    flex: 1; /* These two will share space */
+    min-width: 350px; 
+}
+
+/* NEW: Template Selector Panel */
+.template-selector {
+    flex: 0 0 300px; /* Fixed width for template selector */
+    min-width: 280px;
+    max-height: 800px; /* Limit height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* NEW: Individual Template Card Previews */
+.template-card {
+    height: 200px; /* Story aspect ratio (approx 9:16) */
+    width: 100%; /* Take full grid column width */
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 3px solid transparent; /* Default border */
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.template-card h3 {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    padding: 5px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+.template-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.template-card.active {
+    border-color: #007bff; /* Highlight active template */
+    transform: scale(1.02);
+}
+
+
+/* --- Form Controls --- */
 .controls label {
     display: block;
     margin-top: 20px;
@@ -70,7 +126,6 @@ h2 {
     color: #333;
 }
 
-/* Modern Inputs & Textarea */
 .controls input[type="text"],
 .controls input[type="number"],
 .controls textarea {
@@ -99,7 +154,6 @@ h2 {
     min-height: 100px;
 }
 
-/* NEW: Modern File Input Style */
 .file-upload-label {
     display: flex;
     justify-content: space-between;
@@ -132,7 +186,6 @@ h2 {
     text-overflow: ellipsis;
 }
 
-/* NEW: Modern Button Styles */
 .button-group {
     display: flex;
     gap: 15px;
@@ -140,7 +193,7 @@ h2 {
     flex-wrap: wrap;
 }
 .btn {
-    flex: 1; /* Buttons share space */
+    flex: 1;
     padding: 12px 15px;
     font-size: 1rem;
     font-weight: 600;
@@ -170,65 +223,104 @@ h2 {
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
 
-/* --- Birthday Card Styles (Unchanged) --- */
+/* --- Main Birthday Card / Instagram Story Preview --- */
 #birthdayCard {
-    background: linear-gradient(135deg, #fff1eb, #ace0f9);
-    border: 2px dashed #ff6b6b;
-    border-radius: 10px;
-    padding: 30px;
-    min-height: 350px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    width: 100%;
+    max-width: 360px;
+    padding: 0;
+    min-height: 0;
+    aspect-ratio: 9 / 16;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
     overflow: hidden; 
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
 }
+
 #birthdayCard.card-updated {
     animation: cardFadeIn 0.6s ease-out;
 }
+
 #cardImage {
-    display: none; 
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 250px;
-    object-fit: cover; 
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border: 3px solid white;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 0;
+    z-index: 1;
+    display: none;
 }
+
+#birthdayCard.has-image #cardImage {
+    display: block;
+}
+
+/* Content Area over image */
+#birthdayCard .content-area {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box; /* Ensures padding is included in 100% width/height */
+}
+
 #cardTitle {
-    font-family: 'Cursive', 'Comic Sans MS', sans-serif;
-    font-size: 2.8em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
     color: #d90429;
     margin: 0;
     animation: titlePulse 2.5s ease-in-out infinite;
-}
-#cardRecipient, #cardAgeDisplay, #cardMessageBody {
-    font-family: 'Poppins', sans-serif; /* Use modern font */
-    color: #333;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 #cardRecipient {
-    font-size: 1.3em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
     font-weight: 600;
     color: #0056b3;
-    margin-top: 20px;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 #cardAgeDisplay {
-    font-size: 1.1em;
-    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: #2b2d42;
+    margin-top: 5px;
 }
 #cardMessageBody {
-    font-size: 1.1em;
-    margin-top: 25px;
+    font-family: 'Poppins', serif;
+    font-size: 0.95em;
+    color: #555;
+    margin-top: 15px;
     font-style: italic;
-    line-height: 1.6;
+    line-height: 1.4;
+    max-width: 90%;
+}
+#birthdayCard .decoration {
+    position: absolute;
+    z-index: -1;
 }
 
+/* --- Base Animations (Unchanged) --- */
 @keyframes cardFadeIn {
     from { opacity: 0.5; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-
 @keyframes titlePulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -236,7 +328,214 @@ h2 {
 }
 
 
-/* --- Butterfly Styles (Keep all from previous step) --- */
+/* --- TEMPLATE SPECIFIC STYLES --- */
+
+/* Template 1: Classic Cheer */
+.template-card.template-1 { background: linear-gradient(135deg, #fff1eb, #ace0f9); }
+#birthdayCard.template-1 {
+    background: linear-gradient(135deg, #fff1eb, #ace0f9);
+    border: 3px dashed #ff6b6b;
+}
+#birthdayCard.template-1 #cardTitle { color: #d90429; font-family: 'Dancing Script', cursive; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+#birthdayCard.template-1 #cardRecipient { color: #0056b3; font-family: 'Poppins', sans-serif; }
+#birthdayCard.template-1 #cardAgeDisplay { color: #2b2d42; }
+#birthdayCard.template-1 #cardMessageBody { color: #555; font-style: italic; }
+#birthdayCard.template-1 .content-area { justify-content: center; }
+
+/* ... (Keep templates 2-10 as they are) ... */
+
+/* Template 2: Modern Fun */
+.template-card.template-2 { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+#birthdayCard.template-2 {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    border: none;
+    box-shadow: 0 4px 15px rgba(255,126,95,0.4);
+}
+.template-card.template-2 h3 { background: #ff7e5f; }
+#birthdayCard.template-2 #cardTitle { color: #fff; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; font-size: 3em; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+#birthdayCard.template-2 #cardRecipient { color: #fff; font-weight: 700; text-transform: uppercase; }
+#birthdayCard.template-2 #cardAgeDisplay { color: #eee; }
+#birthdayCard.template-2 #cardMessageBody { color: #fff; font-style: normal; font-weight: 400; max-width: 80%; }
+#birthdayCard.template-2 .content-area { justify-content: flex-start; padding-top: 50px; }
+
+/* Template 3: Elegant Bloom */
+.template-card.template-3 { background: #F5E0E3; }
+#birthdayCard.template-3 {
+    background: #F5E0E3;
+    border: 2px solid #C9A3AA;
+}
+.template-card.template-3 h3 { background: rgba(201, 163, 170, 0.7); }
+#birthdayCard.template-3 #cardTitle { color: #6a0572; font-family: 'Pacifico', cursive; font-size: 2.8em; text-shadow: none; }
+#birthdayCard.template-3 #cardRecipient { color: #4a1942; font-family: 'Dancing Script', cursive; font-size: 1.5em; }
+#birthdayCard.template-3 #cardAgeDisplay { color: #7f5a83; }
+#birthdayCard.template-3 #cardMessageBody { color: #6a4c93; font-style: normal; max-width: 85%; }
+#birthdayCard.template-3 .content-area { justify-content: center; background: rgba(255,255,255,0.6); padding: 40px 20px; border-radius: 10px; margin: 30px; }
+
+/* Template 4: Party Pop */
+.template-card.template-4 { background: radial-gradient(circle at top left, #fbc2eb 0%, #a6c1ee 100%); }
+#birthdayCard.template-4 {
+    background: radial-gradient(circle at top left, #fbc2eb 0%, #a6c1ee 100%);
+    border: 3px dotted #FFD700;
+}
+.template-card.template-4 h3 { background: #a6c1ee; }
+#birthdayCard.template-4 #cardTitle { color: #8a2be2; font-family: 'Oswald', sans-serif; font-size: 3.2em; text-transform: uppercase; letter-spacing: 1px; }
+#birthdayCard.template-4 #cardRecipient { color: #483d8b; font-weight: 700; }
+#birthdayCard.template-4 #cardAgeDisplay { color: #6a5acd; }
+#birthdayCard.template-4 #cardMessageBody { color: #7b68ee; font-style: normal; }
+#birthdayCard.template-4 .content-area { justify-content: center; }
+
+/* Template 5: Cozy Wishes */
+.template-card.template-5 { background: #fdfaf6; }
+#birthdayCard.template-5 {
+    background: #fdfaf6;
+    border: 2px solid #d4a373;
+}
+.template-card.template-5 h3 { background: #d4a373; }
+#birthdayCard.template-5 #cardTitle { color: #8a4a2b; font-family: 'Caveat', cursive; font-size: 3em; text-shadow: none; }
+#birthdayCard.template-5 #cardRecipient { color: #a16a3a; font-family: 'Poppins', sans-serif; font-weight: 500; }
+#birthdayCard.template-5 #cardAgeDisplay { color: #b5815a; }
+#birthdayCard.template-5 #cardMessageBody { color: #c0916a; font-style: italic; }
+#birthdayCard.template-5 .content-area { justify-content: center; }
+
+/* Template 6: Retro Vibe */
+.template-card.template-6 { background: #ffecb3; }
+#birthdayCard.template-6 {
+    background: #ffecb3;
+    background-image: linear-gradient(90deg, #ffcdd2 1px, transparent 1px), linear-gradient(#ffe082 1px, transparent 1px);
+    background-size: 10px 10px;
+    border: 4px solid #f06292;
+    box-shadow: inset 0 0 0 4px #f06292;
+}
+.template-card.template-6 h3 { background: #f06292; }
+#birthdayCard.template-6 #cardTitle { color: #ad1457; font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; font-size: 3.5em; text-shadow: 3px 3px 0px #ffe082; }
+#birthdayCard.template-6 #cardRecipient { color: #6a1b9a; font-weight: 700; text-transform: uppercase; }
+#birthdayCard.template-6 #cardAgeDisplay { color: #9c27b0; }
+#birthdayCard.template-6 #cardMessageBody { color: #4a148c; font-style: normal; font-weight: 600; }
+#birthdayCard.template-6 .content-area { justify-content: center; }
+
+/* Template 7: Starry Night */
+.template-card.template-7 { background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); }
+#birthdayCard.template-7 {
+    background: #1a2a6c;
+    background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d);
+    border: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.template-card.template-7 h3 { background: #b21f1f; }
+#birthdayCard.template-7 #cardTitle { color: #ffeb3b; font-family: 'Pacifico', cursive; font-size: 2.7em; text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
+#birthdayCard.template-7 #cardRecipient { color: #e0f2f7; font-weight: 600; }
+#birthdayCard.template-7 #cardAgeDisplay { color: #bbdefb; }
+#birthdayCard.template-7 #cardMessageBody { color: #81d4fa; font-style: italic; }
+#birthdayCard.template-7 .decoration {
+    width: 100%; height: 100%; top: 0; left: 0;
+    background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px);
+    background-size: 15px 15px;
+    opacity: 0.3;
+}
+#birthdayCard.template-7 .content-area { justify-content: center; }
+
+/* Template 8: Minimal Bliss */
+.template-card.template-8 { background: #f8f8f8; }
+#birthdayCard.template-8 {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+}
+.template-card.template-8 h3 { background: #ddd; color: #555; }
+#birthdayCard.template-8 #cardTitle { color: #333; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2.2em; text-shadow: none; }
+#birthdayCard.template-8 #cardRecipient { color: #666; font-weight: 500; }
+#birthdayCard.template-8 #cardAgeDisplay { color: #888; }
+#birthdayCard.template-8 #cardMessageBody { color: #444; font-style: normal; }
+#birthdayCard.template-8 .content-area { justify-content: flex-start; padding-top: 80px; }
+
+/* Template 9: Gradient Glow */
+.template-card.template-9 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+#birthdayCard.template-9 {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border: none;
+    box-shadow: 0 8px 20px rgba(168, 237, 234, 0.4);
+}
+.template-card.template-9 h3 { background: #fed6e3; }
+#birthdayCard.template-9 #cardTitle { color: #8e2de2; font-family: 'Dancing Script', cursive; font-size: 2.8em; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+#birthdayCard.template-9 #cardRecipient { color: #4a00e0; font-weight: 600; }
+#birthdayCard.template-9 #cardAgeDisplay { color: #8000ff; }
+#birthdayCard.template-9 #cardMessageBody { color: #a044ff; font-style: normal; }
+#birthdayCard.template-9 .content-area { justify-content: center; }
+
+/* Template 10: Bold & Bright */
+.template-card.template-10 { background: linear-gradient(to right, #ff416c, #ff4b2b); }
+#birthdayCard.template-10 {
+    background: #ff416c;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border: 5px solid #ffeb3b;
+}
+.template-card.template-10 h3 { background: #ff4b2b; }
+#birthdayCard.template-10 #cardTitle { color: #ffeb3b; font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; font-size: 3.8em; text-shadow: 3px 3px 0px rgba(0,0,0,0.4); }
+#birthdayCard.template-10 #cardRecipient { color: #fff; font-weight: 700; text-transform: uppercase; }
+#birthdayCard.template-10 #cardAgeDisplay { color: #ffe082; }
+#birthdayCard.template-10 #cardMessageBody { color: #ffccbc; font-style: normal; font-weight: 600; }
+#birthdayCard.template-10 .content-area { justify-content: flex-end; padding-bottom: 50px; }
+
+
+/* --- NEW: Template 11 (Vintage Menu) --- */
+.template-card.template-11 {
+    background-image: url('37623-O19D3W.jpg');
+}
+#birthdayCard.template-11 {
+    background-image: url('37623-O19D3W.jpg');
+    border: none;
+}
+#birthdayCard.template-11 #cardTitle { color: #fdfaf6; font-family: 'Caveat', cursive; font-size: 3em; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+#birthdayCard.template-11 #cardRecipient { color: #f9eac3; font-family: 'Dancing Script', cursive; font-size: 1.5em; }
+#birthdayCard.template-11 #cardAgeDisplay { color: #f0e68c; }
+#birthdayCard.template-11 #cardMessageBody { color: #fff8e1; font-style: italic; max-width: 70%; }
+#birthdayCard.template-11 .content-area { justify-content: center; }
+
+/* --- NEW: Template 12 (Holographic Frame) --- */
+.template-card.template-12 {
+    background-image: url('job494-ploy-01c-a.jpg');
+}
+#birthdayCard.template-12 {
+    background-image: url('job494-ploy-01c-a.jpg');
+    border: none;
+}
+#birthdayCard.template-12 #cardTitle { color: #6a0572; font-family: 'Pacifico', cursive; font-size: 2.8em; }
+#birthdayCard.template-12 #cardRecipient { color: #4a1942; }
+#birthdayCard.template-12 #cardAgeDisplay { color: #7f5a83; }
+#birthdayCard.template-12 #cardMessageBody { color: #6a4c93; font-style: normal; }
+#birthdayCard.template-12 .content-area {
+    /* Push content inside the frame */
+    width: 75%;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 10px;
+}
+
+/* --- NEW: Template 13 (Poinsettia) --- */
+.template-card.template-13 {
+    background-image: url('20 nov 3.jpg');
+}
+#birthdayCard.template-13 {
+    background-image: url('20 nov 3.jpg');
+    border: none;
+}
+#birthdayCard.template-13 #cardTitle { color: #b21f1f; font-family: 'Dancing Script', cursive; font-size: 3em; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+#birthdayCard.template-13 #cardRecipient { color: #8a4a2b; font-weight: 600; }
+#birthdayCard.template-13 #cardAgeDisplay { color: #2e602f; }
+#birthdayCard.template-13 #cardMessageBody { color: #556b2f; font-style: italic; }
+#birthdayCard.template-13 .content-area {
+    /* Push content inside the frame */
+    width: 80%;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 10px;
+}
+
+
+/* --- Butterfly Styles (Unchanged) --- */
 .butterfly-container {
     position: fixed;
     top: 0;
