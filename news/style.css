@@ -288,6 +288,15 @@ main {
     display: block;
     margin-top: 5px;
 }
+/* This p tag is on the new page */
+.live-feeds-container > p {
+    text-align: center;
+    color: var(--text-light);
+    margin-top: -20px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
 
 .feed-grid {
     display: grid;
@@ -513,13 +522,13 @@ footer ul li a:hover {
         margin-bottom: 10px;
     }
     .dark-mode-toggle {
-        position: static; /* Remove absolute positioning */
-        margin: 10px auto 0; /* Center it below if needed */
-        order: 1; /* Puts it at the bottom of header-right */
-        border: 1px solid var(--text-muted); /* Give it a border again */
+        position: static; 
+        margin: 10px auto 0; 
+        order: 1; 
+        border: 1px solid var(--text-muted); 
     }
     .header-center {
-        order: -1; /* Puts it at the top */
+        order: -1; 
         margin-bottom: 15px;
     }
     header h1 {
@@ -575,4 +584,77 @@ footer ul li a:hover {
     .dark-mode-toggle {
         font-size: 1.1rem;
     }
+}
+
+/* --- NEW: Styles for Feed Directory Page --- */
+.feed-directory-container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: background-color 0.3s ease;
+}
+
+.feed-directory-container h2 {
+    font-size: 2.2rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    text-align: center;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.feed-directory-container > p {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.feed-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feed-category h3 {
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.feed-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feed-category li {
+    margin-bottom: 10px;
+}
+
+.feed-category li a {
+    display: block;
+    padding: 8px 12px;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-light);
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.feed-category li a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    text-decoration: none;
+    transform: translateX(4px);
 }
