@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDEC Times - Your Daily News</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-section">
+                <img src="kdec_logo.svg" alt="KDEC Times Logo" class="kdec-logo">
+                <h1>KDEC Times</h1>
+            </div>
+            <p>Your Daily Source for Reliable News</p>
+            
+            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">World</a></li>
+                <li><a href="#">Local</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Opinion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breaking-news">
+        <div class="container">
+            <span>Breaking:</span>
+            <p id="breaking-news-ticker">This is a sample breaking news ticker!</p>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <div class="live-feeds-container">
+            <h2>Live News Feeds</h2>
+            <div class="feed-grid">
+                
+                <div class="feed-card">
+                    <h3>BBC World News</h3>
+                    <script type="text/javascript" src="https://rss.bloople.net/?url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&showtitle=false&type=js"></script>
+                </div>
+                
+                <div class="feed-card">
+                    <h3>NYT HomePage</h3>
+                    <script type="text/javascript" src="https://rss.bloople.net/?url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&showtitle=false&type=js"></script>
+                </div>
+                
+                <div class="feed-card">
+                    <h3>Reuters Top News</h3>
+                    <script type="text/javascript" src="https://rss.bloople.net/?url=http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FtopNews&showtitle=false&type=js"></script>
+                </div>
+                
+                <div class="feed-card">
+                    <h3>CNN Top Stories</h3>
+                    <script type="text/javascript" src="https://rss.bloople.net/?url=http%3A%2F%2Frss.cnn.com%2Frss%2Fcnn_topstories.rss&showtitle=false&type=js"></script>
+                </div>
+
+                <div class="feed-card">
+                    <h3>Hindustan Times</h3>
+                    <script type="text/javascript" src="https://rss.bloople.net/?url=https%3A%2F%2Fwww.hindustantimes.com%2Frss%2Ftopnews%2Frssfeed.xml&showtitle=false&type=js"></script>
+                </div>
+
+                <div class="feed-card">
+                    <h3>Times of India</h3>
+                    <script type="text/javascript" src="https://rss.bloople.net/?url=https%3A%2F%2Ftimesofindia.indiatimes.com%2Frssfeedstopstories.cms&showtitle=false&type=js"></script>
+                </div>
+                
+            </div>
+        </div>
+        <article class="featured-article">
+            <div class="article-image-container">
+                <img src="https://via.placeholder.com/800x400.png?text=Featured+Story+Image" alt="Featured story placeholder" loading="lazy">
+            </div>
+            <h2><a href="#">Featured Story: This is a Major Headline</a></h2>
+            <p>This is the summary text for the main featured article. It's longer than the others to draw the user's attention. You can write a few sentences here describing the story.</p>
+            <div class="article-meta">By Author Name | Oct 19, 2025</div>
+        </article>
+
+        <div class="article-grid">
+            <article class="article-card">
+                <div class="article-image-container">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                </div>
+                <h3><a href="#">World News Headline</a></h3>
+                <p>A short summary of the world news article goes here.</p>
+                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+            </article>
+
+            <article class="article-card">
+                <div class="article-image-container">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                </div>
+                <h3><a href="#">Local Story Headline</a></h3>
+                <p>A short summary of the local news article goes here.</p>
+                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+            </article>
+
+            <article class="article-card">
+                <div class="article-image-container">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                </div>
+                <h3><a href="#">Tech Update Headline</a></h3>
+                <p>A short summary of the tech news article goes here.</p>
+                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+            </article>
+
+            <article class="article-card">
+                <div class="article-image-container">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                </div>
+                <h3><a href="#">Sports Result Headline</a></h3>
+                <p>A short summary of the sports news article goes here.</p>
+                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KDEC Times. All rights reserved.</p>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">⬆️</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
