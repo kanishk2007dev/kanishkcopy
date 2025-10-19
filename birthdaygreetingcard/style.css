@@ -1,69 +1,39 @@
+/* --- NEW: Modern UI Styles --- */
+
+:root {
+    --panel-bg: rgba(255, 255, 255, 0.2);
+    --panel-border: 1px solid rgba(255, 255, 255, 0.3);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --blur: 10px;
+    --radius: 16px;
+    --text-color: #222;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #333;
+    /* Use the new Poppins font */
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
     padding: 20px;
     overflow-x: hidden; 
-    min-height: 100vh; /* Ensure body takes full height for background */
-    position: relative; /* Needed for z-index of butterfly container */
-    z-index: 1; /* Ensure body content is above butterflies */
+    min-height: 100vh;
+    background: linear-gradient(270deg, #f0f4f8, #e0e9f0);
 }
-
-/* NEW: Butterfly Container */
-.butterfly-container {
-    position: fixed; /* Fix to viewport */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Hide butterflies outside the viewport */
-    z-index: 0; /* Place behind body content */
-    pointer-events: none; /* Allows clicks to pass through to elements beneath */
-    background: linear-gradient(270deg, #f0f4f8, #e0e9f0, #f0f4f8, #e0e9f0); /* Keep original gradient */
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-}
-
-/* NEW: Individual Butterfly Styles */
-.butterfly {
-    position: absolute;
-    width: 25px; /* Size of the butterfly */
-    height: 20px;
-    background-color: rgba(255, 165, 0, 0.7); /* Orange-ish, semi-transparent */
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0; /* Simple wing shape */
-    box-shadow: 0 0 8px rgba(255, 165, 0, 0.5); /* Glowing effect */
-    opacity: 0; /* Start invisible */
-    animation: fly 20s linear infinite, fadeInOut 20s ease-in-out infinite; /* Flying and fade animation */
-}
-
-/* NEW: Animations for butterflies */
-
-/* Butterfly flying path */
-@keyframes fly {
-    0% { transform: translate(0vw, 0vh) rotate(0deg); opacity: 0; }
-    10% { transform: translate(10vw, 20vh) rotate(45deg); opacity: 1; }
-    25% { transform: translate(30vw, 5vh) rotate(-30deg); }
-    40% { transform: translate(50vw, 25vh) rotate(60deg); }
-    55% { transform: translate(70vw, 10vh) rotate(-10deg); }
-    70% { transform: translate(90vw, 30vh) rotate(20deg); opacity: 1; }
-    100% { transform: translate(100vw, 0vh) rotate(90deg); opacity: 0; }
-}
-
-/* Butterfly fade in and out */
-@keyframes fadeInOut {
-    0% { opacity: 0; }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
-    100% { opacity: 0; }
-}
-
 
 h1 {
-    color: #0056b3;
-    z-index: 2; /* Keep H1 above butterflies */
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a3a6c;
+    text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+    z-index: 10;
+}
+
+h2 {
+    font-weight: 600;
+    color: #004a99;
 }
 
 .container {
@@ -71,76 +41,136 @@ h1 {
     flex-wrap: wrap; 
     gap: 30px;
     width: 100%;
-    max-width: 900px;
-    z-index: 2; /* Keep container above butterflies */
+    max-width: 1000px;
+    z-index: 10;
 }
 
-.controls, .card-preview {
+/* This is the new "Glassmorphism" panel style */
+.panel {
     flex: 1; 
-    min-width: 320px; 
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.controls h2 {
-    margin-top: 0;
-    color: #007bff;
+    min-width: 350px; 
+    padding: 30px;
+    
+    /* The Glass Effect */
+    background: var(--panel-bg);
+    border: var(--panel-border);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur)); /* For Safari */
+    
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .controls label {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 8px;
     font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
 }
 
-.controls input,
-.controls textarea,
-.controls button {
+/* Modern Inputs & Textarea */
+.controls input[type="text"],
+.controls input[type="number"],
+.controls textarea {
     width: 100%;
-    padding: 12px;
+    padding: 12px 15px;
     box-sizing: border-box; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    color: #333;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    transition: box-shadow 0.3s ease;
 }
 
-.controls input[type="file"] {
-    padding: 8px;
-    background-color: #f9f9f9;
+.controls input[type="text"]:focus,
+.controls input[type="number"]:focus,
+.controls textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
 }
 
 .controls textarea {
     resize: vertical;
+    min-height: 100px;
 }
 
-.controls button {
-    background-color: #007bff;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
+/* NEW: Modern File Input Style */
+.file-upload-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #007bff;
+    border-radius: 8px;
     cursor: pointer;
-    border: none;
-    margin-top: 20px;
     transition: background-color 0.3s ease;
 }
+.file-upload-label:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+.file-upload-label span:first-child {
+    background: #007bff;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+#fileName {
+    font-size: 0.9rem;
+    color: #555;
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-.controls button:hover {
+/* NEW: Modern Button Styles */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+.btn {
+    flex: 1; /* Buttons share space */
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-primary:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
-
-#downloadBtn {
-    background-color: #28a745; 
-    margin-top: 10px;
+.btn-secondary {
+    background-color: #28a745;
+    color: white;
 }
-
-#downloadBtn:hover {
+.btn-secondary:hover {
     background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
 
-/* Card Styling */
+/* --- Birthday Card Styles (Unchanged) --- */
 #birthdayCard {
     background: linear-gradient(135deg, #fff1eb, #ace0f9);
     border: 2px dashed #ff6b6b;
@@ -154,11 +184,9 @@ h1 {
     justify-content: center;
     overflow: hidden; 
 }
-
 #birthdayCard.card-updated {
     animation: cardFadeIn 0.6s ease-out;
 }
-
 #cardImage {
     display: none; 
     width: 100%;
@@ -168,7 +196,6 @@ h1 {
     margin-bottom: 20px;
     border: 3px solid white;
 }
-
 #cardTitle {
     font-family: 'Cursive', 'Comic Sans MS', sans-serif;
     font-size: 2.8em;
@@ -176,42 +203,30 @@ h1 {
     margin: 0;
     animation: titlePulse 2.5s ease-in-out infinite;
 }
-
+#cardRecipient, #cardAgeDisplay, #cardMessageBody {
+    font-family: 'Poppins', sans-serif; /* Use modern font */
+    color: #333;
+}
 #cardRecipient {
     font-size: 1.3em;
-    font-weight: bold;
+    font-weight: 600;
     color: #0056b3;
     margin-top: 20px;
 }
-
 #cardAgeDisplay {
     font-size: 1.1em;
-    color: #2b2d42;
     margin-top: 10px;
 }
-
 #cardMessageBody {
-    font-family: 'Georgia', serif;
     font-size: 1.1em;
-    color: #555;
     margin-top: 25px;
     font-style: italic;
     line-height: 1.6;
 }
 
-
-/* --- ANIMATION RULES --- */
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+@keyframes cardFadeIn {
+    from { opacity: 0.5; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes titlePulse {
@@ -220,13 +235,77 @@ h1 {
     100% { transform: scale(1); }
 }
 
-@keyframes cardFadeIn {
-    from {
-        opacity: 0.5;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+
+/* --- Butterfly Styles (Keep all from previous step) --- */
+.butterfly-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    overflow: hidden;
+    pointer-events: none; 
+}
+.butterfly {
+    position: absolute;
+    perspective: 500px;
+    transform-style: preserve-3d;
+}
+.butterfly .body {
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: #555; 
+    border-radius: 4px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.butterfly .wing {
+    position: absolute;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    animation: flap 0.3s ease-in-out infinite alternate;
+}
+.butterfly.type-1 .wing {
+    width: 30px;
+    height: 40px;
+    border-radius: 50% 10px 10px 50%;
+}
+.butterfly.type-2 .wing {
+    width: 35px;
+    height: 35px;
+    border-radius: 50% 50% 30% 30%;
+}
+.butterfly.type-3 .wing {
+    width: 25px;
+    height: 45px;
+    border-radius: 30% 50% 50% 10px;
+}
+.butterfly.type-3 .body {
+    width: 6px;
+    height: 25px;
+}
+.butterfly .wing.left {
+    left: 50%;
+    top: 50%;
+    transform-origin: 100% 50%; 
+    transform: translate(-100%, -50%) rotateY(0deg);
+}
+.butterfly .wing.right {
+    left: 50%;
+    top: 50%;
+    transform-origin: 0% 50%; 
+    transform: translate(0, -50%) rotateY(0deg);
+}
+@keyframes flap {
+    from { transform: translate(-100%, -50%) rotateY(20deg); }
+    to { transform: translate(-100%, -50%) rotateY(70deg); }
+}
+.butterfly .wing.right {
+    animation-name: flap-right;
+}
+@keyframes flap-right {
+    from { transform: translate(0, -50%) rotateY(-20deg); }
+    to { transform: translate(0, -50%) rotateY(-70deg); }
 }
