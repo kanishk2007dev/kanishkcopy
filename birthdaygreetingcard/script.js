@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('downloadBtn');
     const birthdayCard = document.getElementById('birthdayCard');
     
-    // --- NEW: Get butterfly container ---
-    const butterflyContainer = document.querySelector('.butterfly-container');
-
+    // --- NEW: Get File Name Span ---
+    const fileNameSpan = document.getElementById('fileName');
+    
     
     // --- Helper function to trigger the card animation ---
     function triggerCardAnimation() {
@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Event Listener for Photo Upload ---
     photoInput.addEventListener('change', (event) => {
+        // NEW: Update the file name display
+        if (event.target.files.length > 0) {
+            fileNameSpan.textContent = event.target.files[0].name;
+        } else {
+            fileNameSpan.textContent = 'No file chosen';
+        }
+
         const file = event.target.files[0];
 
         if (file) {
@@ -75,28 +82,88 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Butterfly Animation (Keep all from previous step) ---
 
-    // --- NEW: Generate Butterflies ---
-    const numberOfButterflies = 15; // How many butterflies you want
-    for (let i = 0; i < numberOfButterflies; i++) {
-        const butterfly = document.createElement('div');
-        butterfly.classList.add('butterfly');
+    const butterflyContainer = document.querySelector('.butterfly-container');
+    const numButterflies = 20; 
+    const butterflies = []; 
+
+    for (let i = 0; i < numButterflies; i++) {
+        // 1. Create the HTML elements
+        const butterflyEl = document.createElement('div');
+        butterflyEl.classList.add('butterfly');
         
-        // Randomize initial position
-        butterfly.style.left = Math.random() * 100 + 'vw';
-        butterfly.style.top = Math.random() * 100 + 'vh';
+        const type = Math.floor(Math.random() * 3) + 1;
+        butterflyEl.classList.add(`type-${type}`);
 
-        // Randomize animation delay and duration slightly for a less synchronized look
-        butterfly.style.animationDelay = `${Math.random() * 10}s`;
-        butterfly.style.animationDuration = `${15 + Math.random() * 10}s`; // 15-25 seconds
+        butterflyEl.innerHTML = `
+            <div class="wing left"></div>
+            <div class="body"></div>
+            <div class="wing right"></div>
+        `;
         
-        // Randomize color slightly (optional)
-        const hue = Math.floor(Math.random() * 60) + 30; // Yellow to orange hues
-        butterfly.style.backgroundColor = `hsla(${hue}, 80%, 60%, 0.7)`;
-        butterfly.style.boxShadow = `0 0 8px hsla(${hue}, 80%, 60%, 0.5)`;
+        butterflyContainer.appendChild(butterflyEl);
 
+        // 2. Apply random colors
+        const wings = butterflyEl.querySelectorAll('.wing');
+        const body = butterflyEl.querySelector('.body');
+        
+        const hue1 = Math.random() * 360;
+        const hue2 = (hue1 + Math.random() * 60 - 30) % 360; 
+        
+        const color1 = `hsl(${hue1}, 90%, 65%)`;
+        const color2 = `hsl(${hue2}, 90%, 60%)`;
+        
+        wings.forEach(wing => {
+            wing.style.background = `linear-gradient(45deg, ${color1}, ${color2})`;
+        });
+        
+        const bodyColor = `hsl(${Math.random() * 60}, 10%, ${Math.random() * 20 + 20}%)`; 
+        body.style.background = bodyColor;
 
-        butterflyContainer.appendChild(butterfly);
+        // 3. Store data for animation
+        butterflies.push({
+            el: butterflyEl,
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            speedX: Math.random() * 2 + 1, 
+            speedY: Math.random() * 1 + 0.5, 
+            waveAngle: Math.random() * Math.PI * 2,
+            waveFreq: Math.random() * 0.05 + 0.02, 
+            waveAmp: Math.random() * 50 + 20, 
+            scale: Math.random() * 0.5 + 0.75 
+        });
     }
+
+    let startTime = 0;
+    
+    // 4. The animation loop
+    function animateButterflies(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+
+        butterflies.forEach(b => {
+            b.x += b.speedX;
+            b.waveAngle += b.waveFreq;
+            b.y -= b.speedY; 
+            
+            const flutter = Math.sin(b.waveAngle) * b.waveAmp;
+
+            b.el.style.transform = `
+                translateX(${b.x + flutter}px) 
+                translateY(${b.y}px) 
+                scale(${b.scale})
+            `;
+            
+            if (b.x > window.innerWidth + 100 || b.y < -100) {
+                b.x = -100; 
+                b.y = Math.random() * window.innerHeight; 
+            }
+        });
+
+        requestAnimationFrame(animateButterflies);
+    }
+
+    requestAnimationFrame(animateButterflies);
 
 });
