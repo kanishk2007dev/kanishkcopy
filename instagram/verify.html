@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Required</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .verify-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 350px;
+            text-align: center;
+        }
+        .verify-container h1 {
+            font-size: 1.5rem;
+            color: #1c1e21;
+            margin-bottom: 0.5rem;
+        }
+        .verify-container p {
+            color: #606770;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .verify-input {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            box-sizing: border-box; /* Important for padding to work well */
+        }
+        .verify-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #1877f2; /* Blue color */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .verify-button:hover {
+            background-color: #166fe5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verify-container">
+        <h1>Verification Required</h1>
+        <p>Please enter the password to proceed.</p>
+        <form>
+            <input type="password" class="verify-input" placeholder="Password" required>
+            <button type="submit" class="verify-button">Verify</button>
+        </form>
+    </div>
+
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable keyboard shortcuts
+        document.addEventListener('keydown', event => {
+            // Disable F12 (Developer Tools)
+            if (event.key === 'F12') {
+                event.preventDefault();
+            }
+
+            // Disable Ctrl+Shift+I (Developer Tools)
+            if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+                event.preventDefault();
+            }
+
+            // Disable Ctrl+Shift+C (Inspect Element)
+            if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+                event.preventDefault();
+            }
+            
+            // Disable Ctrl+U (View Source)
+            if (event.ctrlKey && event.key === 'U') {
+                event.preventDefault();
+            }
+        });
+    </script>
+    </body>
+</html>
