@@ -16,17 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardImage = document.getElementById('cardImage');
     const downloadBtn = document.getElementById('downloadBtn');
     const birthdayCard = document.getElementById('birthdayCard');
+    
+    // --- NEW: Get butterfly container ---
+    const butterflyContainer = document.querySelector('.butterfly-container');
 
     
-    // --- NEW: Helper function to trigger the animation ---
+    // --- Helper function to trigger the card animation ---
     function triggerCardAnimation() {
-        // Remove the class to reset the animation
         birthdayCard.classList.remove('card-updated');
-        
-        // This is a small trick to force the browser to restart the animation
         void birthdayCard.offsetWidth; 
-        
-        // Add the class back to play the animation
         birthdayCard.classList.add('card-updated');
     }
 
@@ -41,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cardAgeDisplay.textContent = `Congratulations on turning ${age}!`;
         cardMessageBody.textContent = `"${message}"`;
 
-        // NEW: Trigger the animation
         triggerCardAnimation();
     });
 
@@ -57,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardImage.src = e.target.result;
                 cardImage.style.display = 'block'; 
                 
-                // NEW: Trigger the animation
                 triggerCardAnimation();
             };
 
@@ -78,5 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
             link.click();
         });
     });
+
+
+    // --- NEW: Generate Butterflies ---
+    const numberOfButterflies = 15; // How many butterflies you want
+    for (let i = 0; i < numberOfButterflies; i++) {
+        const butterfly = document.createElement('div');
+        butterfly.classList.add('butterfly');
+        
+        // Randomize initial position
+        butterfly.style.left = Math.random() * 100 + 'vw';
+        butterfly.style.top = Math.random() * 100 + 'vh';
+
+        // Randomize animation delay and duration slightly for a less synchronized look
+        butterfly.style.animationDelay = `${Math.random() * 10}s`;
+        butterfly.style.animationDuration = `${15 + Math.random() * 10}s`; // 15-25 seconds
+        
+        // Randomize color slightly (optional)
+        const hue = Math.floor(Math.random() * 60) + 30; // Yellow to orange hues
+        butterfly.style.backgroundColor = `hsla(${hue}, 80%, 60%, 0.7)`;
+        butterfly.style.boxShadow = `0 0 8px hsla(${hue}, 80%, 60%, 0.5)`;
+
+
+        butterflyContainer.appendChild(butterfly);
+    }
 
 });
