@@ -130,11 +130,7 @@ header {
     width: 50px; /* Slightly smaller logo */
     height: auto;
     margin-right: 10px;
-    filter: brightness(1); /* No invert for light mode */
-    transition: filter 0.3s ease;
-}
-body.dark-mode .kdec-logo {
-    filter: brightness(0) invert(1); /* White in dark mode */
+    /* FILTER REMOVED - No longer needed for PNG */
 }
 
 header h1 {
@@ -586,7 +582,7 @@ footer ul li a:hover {
     }
 }
 
-/* --- NEW: Styles for Feed Directory Page --- */
+/* --- Styles for Feed Directory Page --- */
 .feed-directory-container {
     background: var(--card-bg);
     padding: 30px;
