@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Card Generator</title>
     <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
     <h1>Birthday Card Generator</h1>
@@ -18,15 +20,22 @@
             
             <label for="ageInput">Age They Are Turning:</label>
             <input type="number" id="ageInput" placeholder="e.g., 30">
+
+            <label for="photoInput">Add a Photo:</label>
+            <input type="file" id="photoInput" accept="image/*">
             
             <label for="messageInput">Your Personal Message:</label>
             <textarea id="messageInput" rows="5" placeholder="e.g., Wishing you a fantastic day..."></textarea>
             
-            <button id="generateBtn">Generate Card</button>
+            <button id="generateBtn">Update Text</button>
+            
+            <button id="downloadBtn">Download Card</button>
         </div>
         
         <div class="card-preview">
             <div id="birthdayCard">
+                <img id="cardImage" src="" alt="Uploaded Photo">
+                
                 <h2 id="cardTitle">Happy Birthday!</h2>
                 <p id="cardRecipient">To: ...</p>
                 <p id="cardAgeDisplay">Congratulations on turning ...!</p>
