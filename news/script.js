@@ -43,10 +43,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function applyTheme(theme) {
         if (theme === "dark") {
             body.classList.add("dark-mode");
-            document.querySelector('.kdec-logo').style.filter = 'brightness(0) invert(1)'; // Make logo white
+            // Logo filter logic is REMOVED
         } else {
             body.classList.remove("dark-mode");
-            document.querySelector('.kdec-logo').style.filter = 'brightness(1)'; // Make logo original
+            // Logo filter logic is REMOVED
         }
     }
 
@@ -90,7 +90,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // --- NEW: Dynamic Article Content (Images, Headlines, Summaries, Dates) ---
+    // --- Dynamic Article Content (Images, Headlines, Summaries, Dates) ---
+    // This code will only run on index.html because all-feeds.html doesn't have these elements
 
     const newsData = {
         technology: {
@@ -186,15 +187,12 @@ document.addEventListener("DOMContentLoaded", function() {
         return pastDate.toLocaleDateString('en-US', options);
     }
 
-    // Function to generate random image URL from Unsplash with keywords
     function getRandomImage(keywords, width, height) {
-        // Use a random number to bust cache for fresh images
         const cacheBuster = Math.floor(Math.random() * 10000); 
-        const keywordString = keywords.replace(/,/g, '+'); // Replace commas with plus for Unsplash
+        const keywordString = keywords.replace(/,/g, '+'); 
         return `https://source.unsplash.com/${width}x${height}/?${keywordString}&sig=${cacheBuster}`;
     }
 
-    // Populate Featured Article
     const featuredArticle = document.querySelector('.featured-article');
     if (featuredArticle) {
         const imgElement = featuredArticle.querySelector('img');
@@ -202,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const pElement = featuredArticle.querySelector('p');
         const dateSpan = featuredArticle.querySelector('.article-meta .article-date');
 
-        const category = h2Element.dataset.category || 'world'; // Default to 'world'
+        const category = h2Element.dataset.category || 'world'; 
         const keywords = imgElement.dataset.keywords || 'news';
 
         if (imgElement) {
@@ -219,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Populate Article Grid
     const articleCards = document.querySelectorAll('.article-card');
     articleCards.forEach(card => {
         const imgElement = card.querySelector('img');
@@ -227,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const pElement = card.querySelector('p');
         const dateSpan = card.querySelector('.article-meta .article-date');
 
-        const category = h3Element.dataset.category || 'world'; // Default to 'world'
+        const category = h3Element.dataset.category || 'world'; 
         const keywords = imgElement.dataset.keywords || 'news';
 
         if (imgElement) {
