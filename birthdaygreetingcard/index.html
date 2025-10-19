@@ -8,20 +8,19 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Dancing+Script:wght@700&family=Pacifico&family=Bebas+Neue&family=Caveat:wght@700&family=Oswald:wght@700&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <div class="butterfly-container">
-        </div>
+    <div class="butterfly-container"></div>
     
-    <h1>Birthday Card Generator</h1>
+    <h1>Create Your Birthday Story</h1>
 
     <div class="container">
         <div class="controls panel">
-            <h2>Customize Your Card</h2>
+            <h2>Customize Your Message</h2>
             
             <label for="nameInput">Recipient's Name:</label>
             <input type="text" id="nameInput" placeholder="e.g., Alex">
@@ -41,18 +40,44 @@
             
             <div class="button-group">
                 <button id="generateBtn" class="btn btn-primary">Update Text</button>
-                <button id="downloadBtn" class="btn btn-secondary">Download Card</button>
+                <button id="downloadBtn" class="btn btn-secondary">Download Story</button>
+            </div>
+        </div>
+
+        <div class="template-selector panel">
+            <h2>Choose a Template</h2>
+            <div class="template-grid">
+                
+                <div class="template-card template-1 active" data-template="template-1"><h3>Classic Cheer</h3></div>
+                <div class="template-card template-2" data-template="template-2"><h3>Modern Fun</h3></div>
+                <div class="template-card template-3" data-template="template-3"><h3>Elegant Bloom</h3></div>
+                <div class="template-card template-4" data-template="template-4"><h3>Party Pop</h3></div>
+                <div class="template-card template-5" data-template="template-5"><h3>Cozy Wishes</h3></div>
+                <div class="template-card template-6" data-template="template-6"><h3>Retro Vibe</h3></div>
+                <div class="template-card template-7" data-template="template-7"><h3>Starry Night</h3></div>
+                <div class="template-card template-8" data-template="template-8"><h3>Minimal Bliss</h3></div>
+                <div class="template-card template-9" data-template="template-9"><h3>Gradient Glow</h3></div>
+                <div class="template-card template-10" data-template="template-10"><h3>Bold & Bright</h3></div>
+                
+                <div class="template-card template-11" data-template="template-11"><h3>Vintage Menu</h3></div>
+                <div class="template-card template-12" data-template="template-12"><h3>Holographic</h3></div>
+                <div class="template-card template-13" data-template="template-13"><h3>Poinsettia</h3></div>
+
             </div>
         </div>
         
         <div class="card-preview panel">
-            <div id="birthdayCard">
-                <img id="cardImage" src="" alt="Uploaded Photo">
+            <h2>Your Story Preview</h2>
+            <div id="birthdayCard" class="instagram-story template-1">
                 
-                <h2 id="cardTitle">Happy Birthday!</h2>
-                <p id="cardRecipient">To: ...</p>
-                <p id="cardAgeDisplay">Congratulations on turning ...!</p>
-                <p id="cardMessageBody">Your message will appear here.</p>
+                <img id="cardImage" src="" alt="Uploaded Photo">
+                <div class="content-area">
+                    <h2 id="cardTitle">Happy Birthday!</h2>
+                    <p id="cardRecipient"></p>
+                    <p id="cardAgeDisplay"></p>
+                    <p id="cardMessageBody"></p>
+                    <div class="decoration"></div> 
+                </div>
             </div>
         </div>
     </div>
