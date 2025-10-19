@@ -6,22 +6,28 @@
     <title>KDEC Times - Your Daily News</title>
     <link rel="stylesheet" href="style.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@700;800&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <div class="container header-content">
-            <div class="logo-section">
-                <img src="kdec_logo.svg" alt="KDEC Times Logo" class="kdec-logo">
-                <h1>KDEC Times</h1>
+        <div class="container header-main">
+            <div class="header-left">
+                <p id="current-date" class="current-date"></p>
             </div>
-            <p>Your Daily Source for Reliable News</p>
-            
-            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-                <span class="icon-sun">☀️</span>
-                <span class="icon-moon">🌙</span>
-            </button>
+            <div class="header-center">
+                <div class="logo-section">
+                    <img src="kdec_logo.svg" alt="KDEC Times Logo" class="kdec-logo">
+                    <h1>KDEC Times</h1>
+                </div>
+                <p class="tagline">Your Daily Source for Reliable News</p>
+            </div>
+            <div class="header-right">
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -48,7 +54,7 @@
     <main class="container">
 
         <div class="live-feeds-container">
-            <h2>Live News Feeds</h2>
+            <h2>Live News Feeds <small>(Headlines only - no images from these widgets)</small></h2>
             <div class="feed-grid">
                 
                 <div class="feed-card">
@@ -85,48 +91,48 @@
         </div>
         <article class="featured-article">
             <div class="article-image-container">
-                <img src="https://via.placeholder.com/800x400.png?text=Featured+Story+Image" alt="Featured story placeholder" loading="lazy">
+                <img src="https://via.placeholder.com/800x400.png?text=Featured+Story+Image" data-keywords="technology,future,innovation,science" alt="Featured story placeholder" loading="lazy">
             </div>
-            <h2><a href="#">Featured Story: This is a Major Headline</a></h2>
-            <p>This is the summary text for the main featured article. It's longer than the others to draw the user's attention. You can write a few sentences here describing the story.</p>
-            <div class="article-meta">By Author Name | Oct 19, 2025</div>
+            <h2 data-category="technology"><a href="#">Featured Story: This is a Major Headline</a></h2>
+            <p data-category="technology">This is the summary text for the main featured article. It's longer than the others to draw the user's attention. You can write a few sentences here describing the story.</p>
+            <div class="article-meta">By KDEC Editor | <span class="article-date"></span></div>
         </article>
 
         <div class="article-grid">
             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="world,politics,global" alt="Article placeholder" loading="lazy">
                 </div>
-                <h3><a href="#">World News Headline</a></h3>
-                <p>A short summary of the world news article goes here.</p>
-                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+                <h3 data-category="world"><a href="#">World News Headline</a></h3>
+                <p data-category="world">A short summary of the world news article goes here.</p>
+                <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
 
             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="local,community,city" alt="Article placeholder" loading="lazy">
                 </div>
-                <h3><a href="#">Local Story Headline</a></h3>
-                <p>A short summary of the local news article goes here.</p>
-                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+                <h3 data-category="local"><a href="#">Local Story Headline</a></h3>
+                <p data-category="local">A short summary of the local news article goes here.</p>
+                <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
 
             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="business,finance,economy" alt="Article placeholder" loading="lazy">
                 </div>
-                <h3><a href="#">Tech Update Headline</a></h3>
-                <p>A short summary of the tech news article goes here.</p>
-                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+                <h3 data-category="business"><a href="#">Tech Update Headline</a></h3>
+                <p data-category="business">A short summary of the tech news article goes here.</p>
+                <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
 
             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="sports,game,team,athletic" alt="Article placeholder" loading="lazy">
                 </div>
-                <h3><a href="#">Sports Result Headline</a></h3>
-                <p>A short summary of the sports news article goes here.</p>
-                <div class="article-meta">By Author Name | Oct 19, 2025</div>
+                <h3 data-category="sports"><a href="#">Sports Result Headline</a></h3>
+                <p data-category="sports">A short summary of the sports news article goes here.</p>
+                <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
         </div>
     </main>
