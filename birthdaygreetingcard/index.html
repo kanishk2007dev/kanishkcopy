@@ -6,15 +6,21 @@
     <title>Birthday Card Generator</title>
     <link rel="stylesheet" href="style.css">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <div class="butterfly-container"></div> 
 
+    <div class="butterfly-container">
+        </div>
+    
     <h1>Birthday Card Generator</h1>
 
     <div class="container">
-        <div class="controls">
+        <div class="controls panel">
             <h2>Customize Your Card</h2>
             
             <label for="nameInput">Recipient's Name:</label>
@@ -24,17 +30,22 @@
             <input type="number" id="ageInput" placeholder="e.g., 30">
 
             <label for="photoInput">Add a Photo:</label>
-            <input type="file" id="photoInput" accept="image/*">
+            <input type="file" id="photoInput" accept="image/*" hidden>
+            <label for="photoInput" class="file-upload-label">
+                <span>Choose File</span>
+                <span id="fileName">No file chosen</span>
+            </label>
             
             <label for="messageInput">Your Personal Message:</label>
             <textarea id="messageInput" rows="5" placeholder="e.g., Wishing you a fantastic day..."></textarea>
             
-            <button id="generateBtn">Update Text</button>
-            
-            <button id="downloadBtn">Download Card</button>
+            <div class="button-group">
+                <button id="generateBtn" class="btn btn-primary">Update Text</button>
+                <button id="downloadBtn" class="btn btn-secondary">Download Card</button>
+            </div>
         </div>
         
-        <div class="card-preview">
+        <div class="card-preview panel">
             <div id="birthdayCard">
                 <img id="cardImage" src="" alt="Uploaded Photo">
                 
