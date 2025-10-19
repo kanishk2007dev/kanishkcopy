@@ -10,15 +10,17 @@
     --bg-dark: #343a40;
     --card-bg: #ffffff;
     --border-color: #e0e0e0;
-    --header-bg: #343a40;
-    --header-text: #ffffff;
-    --header-subtext: #ccc;
+    --header-bg: #ffffff; /* Changed for HT style */
+    --header-text: #212529; /* Changed for HT style */
+    --header-subtext: #555; /* Changed for HT style */
     --footer-bg: #343a40;
     --footer-text: #ccc;
     --footer-link-hover: #ffffff;
+    --ht-red: #cc0000; /* Hindustan Times red */
+    --ht-border-light: #eaeaea;
 }
 
-/* --- NEW: Dark Mode Theme --- */
+/* --- Dark Mode Theme --- */
 body.dark-mode {
     --primary-color: #007bff;
     --secondary-color: #0056b3;
@@ -35,6 +37,8 @@ body.dark-mode {
     --footer-bg: #1c1c1c;
     --footer-text: #aaa;
     --footer-link-hover: #ffffff;
+    --ht-red: #ff3333;
+    --ht-border-light: #333;
 }
 
 /* --- Basic Setup --- */
@@ -83,69 +87,102 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.8em;
 }
 
-/* --- Header --- */
+/* --- Header (Hindustan Times Inspired) --- */
 header {
     background: var(--header-bg);
     color: var(--header-text);
-    padding: 25px 0;
-    text-align: center;
-    position: relative; /* For positioning the toggle button */
-    transition: background-color 0.3s ease;
+    padding: 15px 0 0 0; /* Adjusted padding */
+    border-bottom: 1px solid var(--ht-border-light);
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.header-content {
+.header-main {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--ht-border-light); /* Separator line */
+}
+
+.header-left, .header-right {
+    flex: 1;
+    text-align: left;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-center {
+    flex: 2;
+    text-align: center;
 }
 
 .logo-section {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: center; /* Center logo and title */
+    margin-bottom: 5px; /* Reduced margin */
 }
 
 .kdec-logo {
-    width: 60px;
+    width: 50px; /* Slightly smaller logo */
     height: auto;
-    margin-right: 15px;
-    filter: brightness(0) invert(1);
+    margin-right: 10px;
+    filter: brightness(1); /* No invert for light mode */
+    transition: filter 0.3s ease;
+}
+body.dark-mode .kdec-logo {
+    filter: brightness(0) invert(1); /* White in dark mode */
 }
 
 header h1 {
+    font-family: 'Roboto Slab', serif; /* New font for the brand name */
     margin: 0;
-    font-size: 3rem;
-    color: var(--header-text);
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-header p {
-    margin: 0;
-    font-size: 1.2rem;
-    color: var(--header-subtext);
-    font-weight: 300;
+    font-size: 2.8rem; /* Adjusted size */
+    color: var(--ht-red); /* HT Red for the brand name */
+    font-weight: 700;
+    letter-spacing: -1px; /* Tighter spacing */
+    transition: color 0.3s ease;
 }
 
-/* --- NEW: Dark Mode Toggle Button --- */
+.tagline {
+    margin: 0;
+    font-size: 0.9rem; /* Smaller tagline */
+    color: var(--header-subtext);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* Style for the current date */
+.current-date {
+    font-size: 0.85rem; /* Smaller date font */
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+
+/* --- Dark Mode Toggle Button --- */
 .dark-mode-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid var(--header-subtext);
-    border-radius: 30px;
+    background: none; /* No background */
+    border: none; /* No border */
+    color: var(--text-muted); /* Icon color */
+    font-size: 1.5rem;
+    padding: 0;
     cursor: pointer;
-    display: flex;
-    font-size: 1.2rem;
-    padding: 6px 8px;
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
+    outline: none; /* Remove focus outline */
 }
 .dark-mode-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
 .dark-mode-toggle .icon-sun {
-    display: none; /* Hidden in light mode */
+    display: none;
 }
 body.dark-mode .dark-mode-toggle .icon-sun {
     display: block;
@@ -155,12 +192,12 @@ body.dark-mode .dark-mode-toggle .icon-moon {
 }
 
 
-/* --- NEW: Sticky Navigation Bar --- */
+/* --- Sticky Navigation Bar --- */
 nav {
     background: var(--primary-color);
     padding: 12px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky; /* This makes it sticky! */
+    position: sticky;
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
@@ -244,6 +281,14 @@ main {
     transition: border-color 0.3s ease, color 0.3s ease;
 }
 
+.live-feeds-container h2 small {
+    font-size: 0.6em; /* Smaller text for the disclaimer */
+    color: var(--text-muted);
+    font-weight: normal;
+    display: block;
+    margin-top: 5px;
+}
+
 .feed-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -301,7 +346,7 @@ main {
     transition: background-color 0.3s ease;
 }
 .featured-article .article-image-container {
-    overflow: hidden; /* NEW: Needed for zoom effect */
+    overflow: hidden; 
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -309,7 +354,7 @@ main {
     transition: transform 0.3s ease;
 }
 .featured-article:hover img {
-    transform: scale(1.05); /* NEW: Zoom effect */
+    transform: scale(1.05); 
 }
 .featured-article h2 {
     font-size: 2.5rem;
@@ -348,7 +393,7 @@ main {
     background: var(--card-bg);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    overflow: hidden; /* Ensures image corners are rounded */
+    overflow: hidden; 
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 .article-card:hover {
@@ -356,7 +401,7 @@ main {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 .article-card .article-image-container {
-    overflow: hidden; /* NEW: Needed for zoom effect */
+    overflow: hidden; 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -364,12 +409,12 @@ main {
     transition: transform 0.3s ease;
 }
 .article-card:hover img {
-    transform: scale(1.05); /* NEW: Zoom effect */
+    transform: scale(1.05); /* Zoom effect */
 }
 .article-card h3 {
     font-size: 1.4rem;
     padding: 0 20px;
-    margin-top: 15px; /* Added margin */
+    margin-top: 15px; 
     margin-bottom: 10px;
 }
 .article-card h3 a {
@@ -425,7 +470,7 @@ footer ul li a:hover {
     color: var(--footer-link-hover);
 }
 
-/* --- NEW: Back to Top Button --- */
+/* --- Back to Top Button --- */
 .back-to-top {
     position: fixed;
     bottom: 25px;
@@ -439,7 +484,7 @@ footer ul li a:hover {
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    opacity: 0; /* Hidden by default */
+    opacity: 0; 
     visibility: hidden;
     transform: translateY(20px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
@@ -457,15 +502,34 @@ footer ul li a:hover {
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
+    .header-main {
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .header-left, .header-right {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .dark-mode-toggle {
+        position: static; /* Remove absolute positioning */
+        margin: 10px auto 0; /* Center it below if needed */
+        order: 1; /* Puts it at the bottom of header-right */
+        border: 1px solid var(--text-muted); /* Give it a border again */
+    }
+    .header-center {
+        order: -1; /* Puts it at the top */
+        margin-bottom: 15px;
+    }
     header h1 {
         font-size: 2.2rem;
     }
-    .dark-mode-toggle {
-        top: auto;
-        bottom: 15px;
-        right: 15px;
-        font-size: 1rem;
-        padding: 4px 6px;
+    .tagline {
+        font-size: 0.8rem;
+    }
+    .current-date {
+        margin-bottom: 5px;
     }
     nav ul li {
         margin: 0 10px 5px 10px;
@@ -492,9 +556,6 @@ footer ul li a:hover {
     header h1 {
         font-size: 1.8rem;
     }
-    header p {
-        font-size: 0.9rem;
-    }
     .kdec-logo {
         width: 40px;
     }
@@ -510,5 +571,8 @@ footer ul li a:hover {
         font-size: 20px;
         bottom: 15px;
         right: 15px;
+    }
+    .dark-mode-toggle {
+        font-size: 1.1rem;
     }
 }
