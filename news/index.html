@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KDEC NEWS - Your Daily News</title>
-    
-    <link rel="shortcut icon" href="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/favicon%20(2).ico" type="image/x-icon">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/2/22/Krop_Digital_Media_Entertainment_Corporation_%28KDEC%29_company_icon.svg" type="image/svg+xml">
-    
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@700;800&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -20,7 +20,7 @@
             </div>
             <div class="header-center">
                 <div class="logo-section">
-                    <img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/Gemini_Generated_Image_568syl568syl568s.png" alt="KDEC NEWS Logo" class="kdec-logo">
+                    <img src="kdec_logo.png" alt="KDEC NEWS Logo" class="kdec-logo">
                     <h1>KDEC NEWS</h1>
                 </div>
                 <p class="tagline">Your Daily Source for Reliable News</p>
@@ -38,12 +38,20 @@
         <div class="container">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">World</a></li>
-                <li><a href="#">Local</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Opinion</a></li>
-                <li><a href="all-feeds.html">All News Feeds</a></li>
+                <li><a href="feeds/world/index.html">World</a></li>
+                <li><a href="feeds/india/cities.html">Local/Cities</a></li>
+                <li><a href="feeds/india/business-tech.html">Technology</a></li>
+                <li><a href="feeds/india/sports.html">Sports</a></li>
+                <li><a href="feeds/world/index.html#opinion">Opinion</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Feeds by Region ▼</a>
+                    <div class="dropdown-content">
+                        <a href="feeds/india/index.html">India</a>
+                        <a href="feeds/us/index.html">US</a>
+                        <a href="feeds/world/index.html">World/Global</a>
+                        <a href="all-feeds.html">All (Full List)</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
@@ -60,44 +68,42 @@
         <div class="live-feeds-container">
             <h2>Live News Feeds</h2>
             <div class="feed-grid">
-
-                <div class="feed-card">
+                 <div class="feed-card">
                     <h3>BBC World News</h3>
-                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175671/"></script> </div>
-
+                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175671/"></script>
+                </div>
                 <div class="feed-card">
                     <h3>NYT HomePage</h3>
                     <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175671/"></script> </div>
-
                 <div class="feed-card">
                     <h3>Reuters Top News</h3>
-                     <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175672/"></script> </div>
-
+                     <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175672/"></script>
+                </div>
                 <div class="feed-card">
                     <h3>CNN Top Stories</h3>
-                     <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175673/"></script> </div>
-
+                     <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175673/"></script>
+                </div>
                 <div class="feed-card">
                     <h3>NYT World News</h3>
-                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175675/"></script> </div>
-
+                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175675/"></script>
+                </div>
                 <div class="feed-card">
                     <h3>HT US News</h3>
-                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175676/"></script> </div>
-
+                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175676/"></script>
+                </div>
                 <div class="feed-card">
                     <h3>Education News</h3>
-                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175677/"></script> </div>
-
+                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175677/"></script>
+                </div>
                 <div class="feed-card">
                     <h3>India Education News</h3>
-                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175678/"></script> </div>
-
+                    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="175678/"></script>
+                </div>
             </div>
         </div>
         <article class="featured-article">
             <div class="article-image-container">
-                <img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/Gemini_Generated_Image_568syl568syl568s.png" data-keywords="technology,future,innovation,science" alt="Featured story placeholder" loading="lazy">
+                <img src="https://via.placeholder.com/800x400.png?text=Featured+Story+Image" data-keywords="technology,future,innovation,science" alt="Featured story placeholder" loading="lazy">
             </div>
             <h2 data-category="technology"><a href="#">Featured Story: This is a Major Headline</a></h2>
             <p data-category="technology">This is the summary text for the main featured article. It's longer than the others to draw the user's attention. You can write a few sentences here describing the story.</p>
@@ -107,34 +113,31 @@
         <div class="article-grid">
             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/Gemini_Generated_Image_568syl568syl568s.png" data-keywords="world,politics,global" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="world,politics,global" alt="Article placeholder" loading="lazy">
                 </div>
                 <h3 data-category="world"><a href="#">World News Headline</a></h3>
                 <p data-category="world">A short summary of the world news article goes here.</p>
                 <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
-
-            <article class="article-card">
+             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https.raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/Gemini_Generated_Image_568syl568syl568s.png" data-keywords="local,community,city" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="local,community,city" alt="Article placeholder" loading="lazy">
                 </div>
                 <h3 data-category="local"><a href="#">Local Story Headline</a></h3>
                 <p data-category="local">A short summary of the local news article goes here.</p>
                 <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
-
-            <article class="article-card">
+             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/Gemini_Generated_Image_568syl568syl568s.png" data-keywords="business,finance,economy" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="business,finance,economy" alt="Article placeholder" loading="lazy">
                 </div>
                 <h3 data-category="business"><a href="#">Tech Update Headline</a></h3>
                 <p data-category="business">A short summary of the tech news article goes here.</p>
                 <div class="article-meta">By KDEC Reporter | <span class="article-date"></span></div>
             </article>
-
-            <article class="article-card">
+             <article class="article-card">
                 <div class="article-image-container">
-                    <img src="https://raw.githubusercontent.com/kanishk2007dev/kanishkcopy/refs/heads/main/news/Gemini_Generated_Image_568syl568syl568s.png" data-keywords="sports,game,team,athletic" alt="Article placeholder" loading="lazy">
+                    <img src="https://via.placeholder.com/400x200.png?text=Article+Image" data-keywords="sports,game,team,athletic" alt="Article placeholder" loading="lazy">
                 </div>
                 <h3 data-category="sports"><a href="#">Sports Result Headline</a></h3>
                 <p data-category="sports">A short summary of the sports news article goes here.</p>
