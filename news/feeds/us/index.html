@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US News Feeds - KDEC NEWS</title>
+
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/2/22/Krop_Digital_Media_Entertainment_Corporation_%28KDEC%29_company_icon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@700;800&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-main">
+             <div class="header-left">
+                <p id="current-date" class="current-date"></p>
+            </div>
+            <div class="header-center">
+                 <div class="logo-section">
+                    <img src="../../kdec_logo.png" alt="KDEC NEWS Logo" class="kdec-logo">
+                    <h1>KDEC NEWS</h1>
+                </div>
+                <p class="tagline">Your Daily Source for Reliable News</p>
+            </div>
+            <div class="header-right">
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+             <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../feeds/world/index.html">World</a></li> <li><a href="#">Local</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Opinion</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Feeds by Region ▼</a>
+                    <div class="dropdown-content">
+                        <a href="../../feeds/india/index.html">India</a>
+                        <a href="../../feeds/us/index.html">US</a>
+                        <a href="../../feeds/world/index.html">World/Global</a>
+                        <a href="../../all-feeds.html">All (Full List)</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="feed-directory-container">
+            <h2>US News Feeds (Hindustan Times)</h2>
+            <p>Links to various RSS feeds focused on the US. (Links open in a new tab).</p>
+
+            <div class="feed-category-grid">
+                <div class="feed-category">
+                     <h3>US News & Trending</h3>
+                     <ul>
+                        <li><a href="https://www.hindustantimes.com/feeds/rss/world-news/us-news/rssfeed.xml" target="_blank">US News</a></li>
+                        <li><a href="https://www.hindustantimes.com/feeds/rss/trending/us/rssfeed.xml" target="_blank">US Trending</a></li>
+                     </ul>
+                 </div>
+                 <div class="feed-category">
+                     <h3>Entertainment</h3>
+                    <ul>
+                         <li><a href="https://www.hindustantimes.com/feeds/rss/entertainment/hollywood/rssfeed.xml" target="_blank">Hollywood</a></li>
+                     </ul>
+                 </div>
+                <div class="feed-category">
+                     <h3>Sports</h3>
+                     <ul>
+                        <li><a href="https://www.hindustantimes.com/feeds/rss/sports/us-sports/rssfeed.xml" target="_blank">US Sports</a></li>
+                     </ul>
+                 </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+       <div class="container">
+            <p>&copy; 2025 KDEC NEWS. All rights reserved.</p>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">⬆️</button>
+    <script src="../../script.js"></script> </body>
+</html>
