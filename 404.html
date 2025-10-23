@@ -3,222 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>404 - Not Found</title>
     <style>
-        /* Basic Page Styles */
         body {
+            background-color: #000000; /* Black background */
+            color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Prevents scrollbars from the canvas */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            overflow: hidden; /* Hide scrollbars */
             text-align: center;
         }
 
-        /* Background Animation Canvas */
-        #bg-canvas {
+        /* The animation canvas sits in the background */
+        #matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Behind the content */
+            z-index: 1;
         }
 
-        /* Content Container */
+        /* The 404 content sits on top of the animation */
         .container {
             position: relative;
-            z-index: 2; /* In front of the canvas */
-            background-color: rgba(26, 26, 26, 0.8); /* Semi-transparent background */
-            padding: 40px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px); /* Frosted glass effect */
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Add a very subtle blur to make text pop over the animation */
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            padding: 20px;
         }
 
         h1 {
-            font-size: 6rem;
+            font-size: 8rem;
             margin: 0;
-            color: #ff4d4d;
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+            /* Red text to match the falling code */
+            color: #ff3333; 
+            text-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
         }
 
         p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin: 10px 0;
         }
 
-        /* Homepage Link */
         .home-link {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 30px;
             padding: 12px 25px;
-            background-color: #007bff;
+            background-color: #ff3333; /* Red button to match */
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 1px solid rgba(255, 100, 100, 0.5);
         }
 
         .home-link:hover {
-            background-color: #0056b3;
+            background-color: #cc0000; /* Darker red on hover */
             transform: scale(1.05);
         }
-
-        /* --- Mini-Game Styles --- */
-        #game-area {
-            width: 300px;
-            height: 200px;
-            background-color: #333;
-            border: 2px dashed #555;
-            border-radius: 10px;
-            margin: 20px auto 10px;
-            position: relative;
-            overflow: hidden;
-            cursor: crosshair;
-        }
-
-        #bug {
-            position: absolute;
-            font-size: 2rem; /* Using an emoji as the "bug" */
-            cursor: pointer;
-            user-select: none; /* Prevents selecting the emoji */
-            transition: transform 0.1s ease;
-        }
-
-        #bug:active {
-            transform: scale(0.9);
-        }
-
     </style>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
+    
+    <canvas id="matrix-canvas"></canvas>
 
     <div class="container">
         <h1>404</h1>
-        <p><strong>Page Not Found</strong></p>
-        <p>Looks like you've found a bug in the matrix.</p>
-        
-        <p>Quick, squash it! (Score: <span id="score">0</span>)</p>
-        <div id="game-area">
-            <div id="bug">🐞</div>
-        </div>
-        
+        <p><strong>Error: File Not Found</strong></p>
+        <p>The system cannot find the file specified.</p>
         <a href="/" class="home-link">Return to Homepage</a>
     </div>
 
     <script>
-        // --- Part 1: Background Particle Animation ---
-
-        const canvas = document.getElementById('bg-canvas');
+        const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
+
+        // Set canvas to full browser size
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particlesArray = [];
-        const particleCount = 100; // Adjust particle count
-        const particleColor = 'rgba(255, 255, 255, 0.5)'; // Particle color
+        // Using 0s and 1s for the "code"
+        const chars = "01"; 
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
 
-        class Particle {
-            constructor(x, y, size, speedX, speedY) {
-                this.x = x;
-                this.y = y;
-                this.size = size;
-                this.speedX = speedX;
-                this.speedY = speedY;
-            }
-            update() {
-                // Move particle
-                this.x += this.speedX;
-                this.y += this.speedY;
+        // Array to store the 'y' position of each column's drop
+        let drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
 
-                // Handle screen edges (bounce)
-                if (this.x + this.size > canvas.width || this.x - this.size < 0) {
-                    this.speedX = -this.speedX;
+        function draw() {
+            // Draw a semi-transparent black rectangle over the canvas
+            // This creates the fading "trail" effect
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Set the color for the falling characters
+            ctx.fillStyle = "#ff0000"; // RED color as requested
+            ctx.font = fontSize + "px monospace";
+
+            // Loop through each column
+            for (let i = 0; i < drops.length; i++) {
+                // Get a random '0' or '1'
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                
+                // Draw the character
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                // Reset the drop to the top if it goes off-screen
+                // The random check makes the rain columns uneven
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
                 }
-                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
-                    this.speedY = -this.speedY;
-                }
-            }
-            draw() {
-                ctx.fillStyle = particleColor;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+
+                // Move the drop down by one "character"
+                drops[i]++;
             }
         }
 
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < particleCount; i++) {
-                let size = Math.random() * 3 + 1; // Size 1 to 4
-                let x = Math.random() * (canvas.width - size * 2) + size;
-                let y = Math.random() * (canvas.height - size * 2) + size;
-                let speedX = (Math.random() * 1 - 0.5); // Speed -0.5 to 0.5
-                let speedY = (Math.random() * 1 - 0.5); 
-                particlesArray.push(new Particle(x, y, size, speedX, speedY));
-            }
-        }
+        // Start the animation loop (runs ~30 times per second)
+        setInterval(draw, 33);
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        // Adjust canvas on window resize
+        // Optional: Reset canvas if window is resized
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            initParticles();
+            // Recalculate columns and reset drops
+            const newColumns = canvas.width / fontSize;
+            drops = [];
+            for (let x = 0; x < newColumns; x++) {
+                drops[x] = 1;
+            }
         });
-
-        // Start animation
-        initParticles();
-        animateParticles();
-
-        // --- Part 2: "Squash the Bug" Game ---
-
-        const bug = document.getElementById('bug');
-        const gameArea = document.getElementById('game-area');
-        const scoreDisplay = document.getElementById('score');
-        let score = 0;
-
-        function moveBug() {
-            const gameAreaWidth = gameArea.clientWidth;
-            const gameAreaHeight = gameArea.clientHeight;
-            
-            // Get bug dimensions (32x32 based on font size)
-            const bugWidth = bug.clientWidth;
-            const bugHeight = bug.clientHeight;
-
-            // Calculate random positions within the bounds
-            let newX = Math.random() * (gameAreaWidth - bugWidth);
-            let newY = Math.random() * (gameAreaHeight - bugHeight);
-
-            bug.style.left = newX + 'px';
-            bug.style.top = newY + 'px';
-        }
-
-        bug.addEventListener('click', () => {
-            score++; // Increase score
-            scoreDisplay.textContent = score; // Update score display
-            moveBug(); // Move bug to a new spot
-        });
-
-        // Initial bug placement
-        moveBug();
 
     </script>
 </body>
